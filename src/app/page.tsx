@@ -3,9 +3,16 @@
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import Cookie from "js-cookie";
+import Image from "next/image";
 
 import useSessionStorage from "@/hooks/useSessionStorage";
+import useScreenSize from "@/hooks/useScreenSize";
+
 import { UiGameData } from "@/types/Game";
+
+import CTAButton from "@/components/CTAButton/CTAButton";
+
+import styles from "./page.module.css";
 
 const fetchGameData = async (): Promise<UiGameData | null> => {
   try {
@@ -25,6 +32,7 @@ const fetchGameData = async (): Promise<UiGameData | null> => {
 
 export default function Home() {
   const router = useRouter();
+  const { isDesktop } = useScreenSize();
 
   const [storedGame, setStoredGame] = useSessionStorage<UiGameData | null>(
     "game",
@@ -59,11 +67,17 @@ export default function Home() {
   }, [storedGame?.id]);
 
   return (
-    <div>
-      Start Quiz Page
-      <button onClick={handleStartGame} type="button">
-        Start Game
-      </button>
+    <div className={styles.wrapper}>
+      <div className={styles.mainContainer}>
+        <Image
+          src="/images/hand.png"
+          alt="thumbsup"
+          width={isDesktop ? 624 : 285}
+          height={isDesktop ? 367 : 192}
+        />
+        <h1 className={styles.title}>Who wants to be a millionaire?</h1>
+        <CTAButton label="Start" onClick={handleStartGame} />
+      </div>
     </div>
   );
 }
