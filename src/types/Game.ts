@@ -1,18 +1,18 @@
 import { Question, UidQuestion } from "./Question";
 
-export type UiGameData = {
+type BasicGame = {
   id: string;
-  currentQuestionIndex: number;
   score: number;
+  status: "active" | "ended";
+};
+
+export type UiGameData = BasicGame & {
   questions: {
     uId: string;
     status: Question["status"];
   }[];
 };
 
-export type Game = {
-  id: string;
+export type Game = BasicGame & {
   questions: UidQuestion[];
-  currentQuestionIndex: number;
-  score: number;
 };

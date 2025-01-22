@@ -42,12 +42,19 @@ export default function Home() {
 
   // @dev check if there is a game instance already
   useEffect(() => {
-    if (storedGame?.id) {
+    const cookedGameId = Cookie.get("gameId");
+    if (storedGame?.id && storedGame.id === cookedGameId) {
       const unansweredQuestion = storedGame.questions.find(
-        (question) => question.status === "pending",
+        (question) => question.status === "active",
       );
 
-      router.push(`/question/${unansweredQuestion?.uId}`);
+      if (storedGame.status === "ended") {
+        router.push("/end");
+      }
+
+      if (unansweredQuestion) {
+        router.push(`/question/${unansweredQuestion?.uId}`);
+      }
     }
   }, [storedGame?.id]);
 

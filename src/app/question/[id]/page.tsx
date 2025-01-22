@@ -46,5 +46,5 @@ export default async function QuestionPage({
     return <div>Nope</div>;
   }
 
-  return <QuestionContainer question={questionData} />;
+  return <QuestionContainer questionData={questionData} />;
 }

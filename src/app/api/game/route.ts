@@ -24,8 +24,8 @@ async function POST() {
   const game = {
     id: gameId,
     questions: gameQuestions,
-    currentQuestionIndex: 0,
     score: 0,
+    status: "active",
   };
 
   const newGamePath = path.join(process.cwd(), "data", `game-${gameId}.json`);
@@ -36,8 +36,8 @@ async function POST() {
 
   const uiGameData: UiGameData = {
     id: gameId,
-    currentQuestionIndex: 0,
     score: 0,
+    status: "active",
     questions: gameQuestions.map((question: UidQuestion) => ({
       uId: question.uId,
       status: question.status,
