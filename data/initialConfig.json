@@ -2,7 +2,8 @@
   {
     "id": 1,
     "question": "What is the capital of Ukraine?",
-    "type": "single",
+    "answerType": "single",
+    "status": "active",
     "answers": [
       { "value": "Kyiv", "isCorrect": true },
       { "value": "Kharkiv", "isCorrect": false },
@@ -13,7 +14,8 @@
   {
     "id": 2,
     "question": "What is the capital of France?",
-    "type": "single",
+    "answerType": "single",
+    "status": "pending",
     "answers": [
       { "value": "Paris", "isCorrect": true },
       { "value": "Lyon", "isCorrect": false },
