@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 
-import QuestionContainer from "@/containers/QuestionContainer";
+import QuestionContainer from "@/containers/QuestionContainer/QuestionContainer";
 import { UidQuestion } from "@/types/Question";
 
 async function getQuestion(id: string): Promise<UidQuestion> {
@@ -15,6 +15,7 @@ async function getQuestion(id: string): Promise<UidQuestion> {
       headers: {
         "X-Game-ID": gameId || "",
       },
+      cache: "no-store",
     },
   );
 

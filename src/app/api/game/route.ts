@@ -41,6 +41,7 @@ async function POST() {
     questions: gameQuestions.map((question: UidQuestion) => ({
       uId: question.uId,
       status: question.status,
+      answeredCorrectly: question.answeredCorrectly,
     })),
   };
 

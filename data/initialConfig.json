@@ -4,11 +4,12 @@
     "question": "What is the capital of Ukraine?",
     "answerType": "single",
     "status": "active",
+    "answeredCorrectly": false,
     "answers": [
-      { "value": "Kyiv", "isCorrect": true },
-      { "value": "Kharkiv", "isCorrect": false },
-      { "value": "Lviv", "isCorrect": false },
-      { "value": "Odessa", "isCorrect": false }
+      { "value": "Kyiv", "isCorrect": true, "selected": false },
+      { "value": "Kharkiv", "isCorrect": false, "selected": false },
+      { "value": "Lviv", "isCorrect": false, "selected": false },
+      { "value": "Odessa", "isCorrect": false, "selected": false }
     ]
   },
   {
@@ -16,11 +17,38 @@
     "question": "What is the capital of France?",
     "answerType": "single",
     "status": "pending",
+    "answeredCorrectly": false,
     "answers": [
-      { "value": "Paris", "isCorrect": true },
-      { "value": "Lyon", "isCorrect": false },
-      { "value": "Marseille", "isCorrect": false },
-      { "value": "Toulouse", "isCorrect": false }
+      { "value": "Paris", "isCorrect": true, "selected": false },
+      { "value": "Lyon", "isCorrect": false, "selected": false },
+      { "value": "Marseille", "isCorrect": false, "selected": false },
+      { "value": "Toulouse", "isCorrect": false, "selected": false }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "What is the capital of France?",
+    "answerType": "single",
+    "status": "pending",
+    "answeredCorrectly": false,
+    "answers": [
+      { "value": "Paris", "isCorrect": true, "selected": false },
+      { "value": "Lyon", "isCorrect": false, "selected": false },
+      { "value": "Marseille", "isCorrect": false, "selected": false },
+      { "value": "Toulouse", "isCorrect": false, "selected": false }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "What is the capital of France?",
+    "answerType": "single",
+    "status": "pending",
+    "answeredCorrectly": false,
+    "answers": [
+      { "value": "Paris", "isCorrect": true, "selected": false },
+      { "value": "Lyon", "isCorrect": false, "selected": false },
+      { "value": "Marseille", "isCorrect": false, "selected": false },
+      { "value": "Toulouse", "isCorrect": false, "selected": false }
     ]
   }
 ]
