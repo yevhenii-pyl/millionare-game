@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 
 const useScreenSize = () => {
   const [screenSize, setScreenSize] = useState({
-    isMobile: false,
+    isMobile: true,
     isTablet: false,
-    isDesktop: true,
+    isDesktop: false,
   });
 
   const updateScreenSize = () => {

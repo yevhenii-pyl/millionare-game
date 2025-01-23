@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
+import { notFound } from "next/navigation";
 
-import QuestionContainer from "@/containers/QuestionContainer";
+import QuestionContainer from "@/containers/QuestionContainer/QuestionContainer";
 import { UidQuestion } from "@/types/Question";
 
 async function getQuestion(id: string): Promise<UidQuestion> {
@@ -15,6 +16,7 @@ async function getQuestion(id: string): Promise<UidQuestion> {
       headers: {
         "X-Game-ID": gameId || "",
       },
+      cache: "no-store",
     },
   );
 
@@ -42,8 +44,7 @@ export default async function QuestionPage({
   }
 
   if (!questionData) {
-    // TODO: error handler
-    return <div>Nope</div>;
+    notFound();
   }
 
   return <QuestionContainer questionData={questionData} />;

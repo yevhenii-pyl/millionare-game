@@ -34,6 +34,7 @@ async function GET(req: Request, { params }: { params: { id: string } }) {
 async function PUT(req: Request, { params }: { params: { id: string } }) {
   const gameId = req.headers.get("X-Game-ID");
   const action = req.headers.get("X-Game-Action");
+  const answerIndex = req.headers.get("X-Answer-Index");
   const { id: questionId } = await params;
 
   if (!gameId) {
@@ -73,11 +74,14 @@ async function PUT(req: Request, { params }: { params: { id: string } }) {
 
   if (action === "correct") {
     game.score += 1;
+    game.questions[questionIndex].answeredCorrectly = true;
   }
 
   if (action === "wrong") {
     game.status = "ended";
   }
+
+  game.questions[questionIndex].answers[Number(answerIndex)].selected = true;
 
   await fs.writeFile(filePath, JSON.stringify(game, null, 2));
 
@@ -88,6 +92,7 @@ async function PUT(req: Request, { params }: { params: { id: string } }) {
     questions: game.questions.map((question: UidQuestion) => ({
       uId: question.uId,
       status: question.status,
+      answeredCorrectly: question.answeredCorrectly,
     })),
   };
 

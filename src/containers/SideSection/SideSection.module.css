@@ -1,0 +1,141 @@
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  z-index: 20;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
+  transition: right 0.4s ease;
+  background-color: var(--black-5);
+  padding: 64px 0 32px;
+  display: flex;
+  overflow: hidden;
+}
+
+.wrapper.active {
+  right: 0;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  width: 100%;
+}
+
+.listItem {
+  position: relative;
+}
+
+.listItem::before,
+.listItem::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 150px;
+  height: 1px;
+  background-color: var(--black-40);
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.listItem::before {
+  right: -155px;
+}
+
+.listItem::after {
+  left: -152px;
+}
+
+.listItem.active::before,
+.listItem.active::after {
+  background-color: var(--orange-100);
+}
+
+.amount {
+  width: 240px;
+  height: 32px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 8px 24px;
+  background: transparent;
+  color: var(--black-100);
+  font-size: 14px;
+  font-weight: 400;
+  cursor: default;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.amount span {
+  z-index: 1;
+}
+
+.amount.active {
+  color: var(--orange-100);
+}
+
+.amount.answered {
+  color: var(--black-40);
+}
+
+.amount:before,
+.amount:after {
+  position: absolute;
+  content: "";
+  width: 240px;
+  left: 0px;
+  height: 16px;
+  background-color: var(--white-100);
+}
+
+.amount:before {
+  bottom: 16px;
+  transform: perspective(15px) rotateX(3deg);
+}
+.amount:after {
+  top: 16px;
+  transform: perspective(15px) rotateX(-3deg);
+}
+
+.border:before,
+.border:after {
+  border: 1px solid var(--black-40);
+}
+.border:before {
+  border-bottom: none;
+}
+.border:after {
+  border-top: none;
+}
+
+.border.active:before,
+.border.active:after {
+  border: 1px solid var(--orange-100);
+}
+.border.active:before {
+  border-bottom: none;
+}
+.border.active:after {
+  border-top: none;
+}
+
+@media (min-width: 1330px) {
+  .wrapper {
+    position: relative;
+    grid-column: 2;
+    grid-row: 1;
+    box-shadow: none;
+    background-color: var(--white-100);
+  }
+
+  .list {
+    justify-content: center;
+  }
+}

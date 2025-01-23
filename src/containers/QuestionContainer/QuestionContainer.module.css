@@ -1,0 +1,14 @@
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--black-5);
+  overflow: hidden;
+}
+
+@media (min-width: 1330px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: 1fr;
+  }
+}

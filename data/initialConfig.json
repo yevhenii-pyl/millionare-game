@@ -4,11 +4,12 @@
     "question": "What is the capital of Ukraine?",
     "answerType": "single",
     "status": "active",
+    "answeredCorrectly": false,
     "answers": [
-      { "value": "Kyiv", "isCorrect": true },
-      { "value": "Kharkiv", "isCorrect": false },
-      { "value": "Lviv", "isCorrect": false },
-      { "value": "Odessa", "isCorrect": false }
+      { "value": "Kyiv", "isCorrect": true, "selected": false },
+      { "value": "Kharkiv", "isCorrect": false, "selected": false },
+      { "value": "Lviv", "isCorrect": false, "selected": false },
+      { "value": "Odessa", "isCorrect": false, "selected": false }
     ]
   },
   {
@@ -16,11 +17,116 @@
     "question": "What is the capital of France?",
     "answerType": "single",
     "status": "pending",
+    "answeredCorrectly": false,
     "answers": [
-      { "value": "Paris", "isCorrect": true },
-      { "value": "Lyon", "isCorrect": false },
-      { "value": "Marseille", "isCorrect": false },
-      { "value": "Toulouse", "isCorrect": false }
+      { "value": "Paris", "isCorrect": true, "selected": false },
+      { "value": "Lyon", "isCorrect": false, "selected": false },
+      { "value": "Marseille", "isCorrect": false, "selected": false },
+      { "value": "Toulouse", "isCorrect": false, "selected": false }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "What is the largest ocean on Earth?",
+    "answerType": "single",
+    "status": "pending",
+    "answeredCorrectly": false,
+    "answers": [
+      { "value": "Atlantic Ocean", "isCorrect": false, "selected": false },
+      { "value": "Indian Ocean", "isCorrect": false, "selected": false },
+      { "value": "Arctic Ocean", "isCorrect": false, "selected": false },
+      { "value": "Pacific Ocean", "isCorrect": true, "selected": false }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "Which element is represented by the symbol 'O'?",
+    "answerType": "single",
+    "status": "pending",
+    "answeredCorrectly": false,
+    "answers": [
+      { "value": "Osmium", "isCorrect": false, "selected": false },
+      { "value": "Oxygen", "isCorrect": true, "selected": false },
+      { "value": "Gold", "isCorrect": false, "selected": false },
+      { "value": "Silver", "isCorrect": false, "selected": false }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "What is the boiling point of water?",
+    "answerType": "single",
+    "status": "pending",
+    "answeredCorrectly": false,
+    "answers": [
+      { "value": "0°C", "isCorrect": false, "selected": false },
+      { "value": "50°C", "isCorrect": false, "selected": false },
+      { "value": "100°C", "isCorrect": true, "selected": false },
+      { "value": "200°C", "isCorrect": false, "selected": false }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "Who painted the Mona Lisa?",
+    "answerType": "single",
+    "status": "pending",
+    "answeredCorrectly": false,
+    "answers": [
+      { "value": "Vincent van Gogh", "isCorrect": false, "selected": false },
+      { "value": "Pablo Picasso", "isCorrect": false, "selected": false },
+      { "value": "Leonardo da Vinci", "isCorrect": true, "selected": false },
+      { "value": "Claude Monet", "isCorrect": false, "selected": false }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "Which planet is known as the 'Red Planet'?",
+    "answerType": "single",
+    "status": "pending",
+    "answeredCorrectly": false,
+    "answers": [
+      { "value": "Earth", "isCorrect": false, "selected": false },
+      { "value": "Mars", "isCorrect": true, "selected": false },
+      { "value": "Jupiter", "isCorrect": false, "selected": false },
+      { "value": "Saturn", "isCorrect": false, "selected": false }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "What is the largest land animal?",
+    "answerType": "single",
+    "status": "pending",
+    "answeredCorrectly": false,
+    "answers": [
+      { "value": "Horse", "isCorrect": false, "selected": false },
+      { "value": "Elephant", "isCorrect": true, "selected": false },
+      { "value": "Giraffe", "isCorrect": false, "selected": false },
+      { "value": "Rhinoceros", "isCorrect": false, "selected": false }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "What is the primary language spoken in Brazil?",
+    "answerType": "single",
+    "status": "pending",
+    "answeredCorrectly": false,
+    "answers": [
+      { "value": "Spanish", "isCorrect": false, "selected": false },
+      { "value": "Portuguese", "isCorrect": true, "selected": false },
+      { "value": "English", "isCorrect": false, "selected": false },
+      { "value": "French", "isCorrect": false, "selected": false }
+    ]
+  },
+  {
+    "id": 9,
+    "question": "Which gas do plants absorb from the atmosphere?",
+    "answerType": "single",
+    "status": "pending",
+    "answeredCorrectly": false,
+    "answers": [
+      { "value": "Oxygen", "isCorrect": false, "selected": false },
+      { "value": "Nitrogen", "isCorrect": false, "selected": false },
+      { "value": "Carbon Dioxide", "isCorrect": true, "selected": false },
+      { "value": "Hydrogen", "isCorrect": false, "selected": false }
     ]
   }
 ]
