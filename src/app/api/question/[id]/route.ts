@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
-import path from "path";
-import fs from "fs/promises";
+import AWS from "aws-sdk";
 
 import { UidQuestion } from "@/types/Question";
-import { Game, UiGameData } from "@/types/Game";
+import { UiGameData } from "@/types/Game";
+
+const s3 = new AWS.S3();
+const bucketName = process.env.AWS_S3_BUCKET_NAME;
 
 async function GET(
   req: Request,
@@ -16,8 +18,25 @@ async function GET(
     return NextResponse.json({ error: "Game ID is missing" }, { status: 400 });
   }
 
-  const filePath = path.join(process.cwd(), "data", `game-${gameId}.json`);
-  const game: Game = JSON.parse(await fs.readFile(filePath, "utf-8"));
+  if (!bucketName) {
+    throw new Error("Nu such bucket");
+  }
+
+  const fileName = `game-${gameId}.json`;
+
+  const awsParams = {
+    Bucket: bucketName,
+    Key: fileName,
+  };
+
+  let game;
+
+  try {
+    const data = await s3.getObject(awsParams).promise();
+    game = JSON.parse(data.Body!.toString("utf-8"));
+  } catch (error) {
+    console.error("Error reading file from S3:", error);
+  }
 
   if (!game) {
     return NextResponse.json({ error: "Game not found" }, { status: 404 });
@@ -54,8 +73,25 @@ async function PUT(
     );
   }
 
-  const filePath = path.join(process.cwd(), "data", `game-${gameId}.json`);
-  const game: Game = JSON.parse(await fs.readFile(filePath, "utf-8"));
+  if (!bucketName) {
+    throw new Error("Nu such bucket");
+  }
+
+  const fileName = `game-${gameId}.json`;
+
+  const awsParams = {
+    Bucket: bucketName,
+    Key: fileName,
+  };
+
+  let game;
+
+  try {
+    const data = await s3.getObject(awsParams).promise();
+    game = JSON.parse(data.Body!.toString("utf-8"));
+  } catch (error) {
+    console.error("Error reading file from S3:", error);
+  }
 
   if (!game) {
     return NextResponse.json({ error: "Game not found" }, { status: 404 });
@@ -89,7 +125,14 @@ async function PUT(
 
   game.questions[questionIndex].answers[Number(answerIndex)].selected = true;
 
-  await fs.writeFile(filePath, JSON.stringify(game, null, 2));
+  const uploadParams = {
+    Bucket: bucketName,
+    Key: fileName,
+    Body: JSON.stringify(game),
+    ContentType: "application/json",
+  };
+
+  await s3.putObject(uploadParams).promise();
 
   const uiGameData: UiGameData = {
     id: gameId,

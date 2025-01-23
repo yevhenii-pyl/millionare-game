@@ -13,6 +13,7 @@
     "format:fix": "prettier --write --list-different ."
   },
   "dependencies": {
+    "aws-sdk": "^2.1692.0",
     "classnames": "^2.5.1",
     "cookie": "^1.0.2",
     "js-cookie": "^3.0.5",

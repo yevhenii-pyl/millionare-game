@@ -2,10 +2,18 @@ import { NextResponse } from "next/server";
 import fs from "fs/promises";
 import path from "path";
 import uuid4 from "uuid4";
+import AWS from "aws-sdk";
 
 import { Question, UidQuestion } from "@/types/Question";
 import { UiGameData } from "@/types/Game";
-import manageFiles from "@/helpers/manageDb";
+
+const s3 = new AWS.S3({
+  region: process.env.AWS_REGION,
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+});
+
+const bucketName = process.env.AWS_S3_BUCKET_NAME;
 
 async function POST() {
   const filePath = path.join(process.cwd(), "data", "initialConfig.json");
@@ -13,7 +21,7 @@ async function POST() {
     await fs.readFile(filePath, "utf-8"),
   );
 
-  manageFiles();
+  // manageFiles();
 
   // @dev create && store new game
   const gameId = uuid4();
@@ -31,8 +39,29 @@ async function POST() {
     status: "active",
   };
 
-  const newGamePath = path.join(process.cwd(), "data", `game-${gameId}.json`);
-  await fs.writeFile(newGamePath, JSON.stringify(game, null, 2));
+  const newGameFileName = `game-${gameId}.json`;
+  const newGameContent = JSON.stringify(game, null, 2);
+
+  if (!bucketName) {
+    throw new Error("Nu such bucket");
+  }
+
+  const params = {
+    Bucket: bucketName,
+    Key: newGameFileName,
+    Body: newGameContent,
+    ContentType: "application/json",
+  };
+
+  try {
+    await s3.putObject(params).promise();
+  } catch (error) {
+    console.error("Error uploading file:", error);
+    return NextResponse.json(
+      { error: "Error uploading file" },
+      { status: 500 },
+    );
+  }
 
   // @dev return game data to be stored at session storage
   // avoid sending sensitive data, like correct answers, here
