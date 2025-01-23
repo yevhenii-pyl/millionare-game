@@ -36,3 +36,8 @@ npm dev
 ```
 
 Open your browser and navigate to `http://localhost:3000` to play the game.
+
+
+## Also, I am deployed with Vercel. 
+However, my father is a bit autistic, so he decided to play with an AWS bucket instead of creating a database. 
+Just for fun, so to speak. He will clean up the AWS storage once in a while.
