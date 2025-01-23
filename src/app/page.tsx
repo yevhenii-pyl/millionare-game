@@ -11,24 +11,9 @@ import useScreenSize from "@/hooks/useScreenSize";
 import { UiGameData } from "@/types/Game";
 
 import CTAButton from "@/components/CTAButton/CTAButton";
+import fetchGameData from "@/actions/fetchGame";
 
 import styles from "./page.module.css";
-
-const fetchGameData = async (): Promise<UiGameData | null> => {
-  try {
-    const response = await fetch("/api/game", { method: "POST" });
-
-    if (!response.ok) {
-      throw new Error("Failed to start game");
-    }
-
-    const game: UiGameData = await response.json();
-    return game;
-  } catch (error) {
-    console.error("Error starting the game:", error);
-    return null;
-  }
-};
 
 export default function Home() {
   const router = useRouter();

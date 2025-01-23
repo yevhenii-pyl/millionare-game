@@ -1,4 +1,5 @@
 import { cookies } from "next/headers";
+import { notFound } from "next/navigation";
 
 import QuestionContainer from "@/containers/QuestionContainer/QuestionContainer";
 import { UidQuestion } from "@/types/Question";
@@ -43,8 +44,7 @@ export default async function QuestionPage({
   }
 
   if (!questionData) {
-    // TODO: error handler
-    return <div>Nope</div>;
+    notFound();
   }
 
   return <QuestionContainer questionData={questionData} />;

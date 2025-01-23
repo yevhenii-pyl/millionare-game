@@ -5,12 +5,15 @@ import uuid4 from "uuid4";
 
 import { Question, UidQuestion } from "@/types/Question";
 import { UiGameData } from "@/types/Game";
+import manageFiles from "@/helpers/manageDb";
 
 async function POST() {
   const filePath = path.join(process.cwd(), "data", "initialConfig.json");
   const questions: Question[] = JSON.parse(
     await fs.readFile(filePath, "utf-8"),
   );
+
+  manageFiles();
 
   // @dev create && store new game
   const gameId = uuid4();
