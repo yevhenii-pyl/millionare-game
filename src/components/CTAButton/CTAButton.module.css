@@ -11,6 +11,10 @@
   transition: all 0.3s;
 }
 
+.button:disabled {
+  background-color: var(--orange-100);
+}
+
 .button:hover,
 .button:active {
   background-color: var(--orange-120);
