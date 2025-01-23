@@ -32,7 +32,7 @@ async function getQuestion(id: string): Promise<UidQuestion> {
 export default async function QuestionPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
 

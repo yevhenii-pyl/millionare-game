@@ -5,7 +5,10 @@ import fs from "fs/promises";
 import { UidQuestion } from "@/types/Question";
 import { Game, UiGameData } from "@/types/Game";
 
-async function GET(req: Request, { params }: { params: { id: string } }) {
+async function GET(
+  req: Request,
+  { params }: { params: Promise<{ id: string }> },
+) {
   const gameId = req.headers.get("X-Game-ID");
   const { id: questionId } = await params;
 
@@ -31,7 +34,10 @@ async function GET(req: Request, { params }: { params: { id: string } }) {
   return NextResponse.json({ ...question });
 }
 
-async function PUT(req: Request, { params }: { params: { id: string } }) {
+async function PUT(
+  req: Request,
+  { params }: { params: Promise<{ id: string }> },
+) {
   const gameId = req.headers.get("X-Game-ID");
   const action = req.headers.get("X-Game-Action");
   const answerIndex = req.headers.get("X-Answer-Index");
