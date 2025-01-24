@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 
 import "@/styles/globals.css";
 import "@/styles/variables.css";
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={interLatin.className}>
       <body>{children}</body>
+      <Analytics />
     </html>
   );
 }
