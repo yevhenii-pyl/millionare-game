@@ -3,6 +3,8 @@
 import { useState } from "react";
 import cn from "classnames";
 
+import Loader from "@/components/Loader/Loader";
+
 import styles from "./AnswerButton.module.css";
 
 function AnswerButton({
@@ -22,7 +24,7 @@ function AnswerButton({
   answeredCorrectly: boolean;
   selected: boolean;
 }) {
-  const [disabled, setDisabled] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <div
@@ -36,19 +38,21 @@ function AnswerButton({
         type="button"
         onClick={() => {
           onClick(isCorrect, index);
-          setDisabled(true);
+          setIsLoading(true);
         }}
         className={cn(styles.answerButton, styles.border, {
-          [styles.answeredCorrectly]: answeredCorrectly && isCorrect,
+          [styles.answeredCorrectly]:
+            (answeredCorrectly || isLoading) && isCorrect,
           [styles.answeredWrong]:
-            !answeredCorrectly && status === "answered" && selected,
+            (!answeredCorrectly && status === "answered" && selected) ||
+            (isLoading && !isCorrect),
         })}
-        disabled={disabled || status === "answered"}
+        disabled={isLoading || status === "answered"}
       >
         <span className={styles.questionLetter}>
           {String.fromCharCode(65 + index)}
         </span>
-        <span>{label}</span>
+        {isLoading ? <Loader /> : <span>{label}</span>}
       </button>
     </div>
   );

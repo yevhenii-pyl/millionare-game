@@ -7,6 +7,8 @@
   background-color: var(--orange-100);
   color: var(--white-100);
   cursor: pointer;
+  display: flex;
+  justify-content: center;
 
   transition: all 0.3s;
 }

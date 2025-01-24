@@ -2,14 +2,16 @@
 
 import { useState } from "react";
 
+import Loader from "@/components/Loader/Loader";
+
 import styles from "./CTAButton.module.css";
 
 function CTAButton({ onClick, label }: { onClick: () => void; label: string }) {
-  const [disabled, setDisabled] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleClick = () => {
     onClick();
-    setDisabled(true);
+    setIsLoading(true);
   };
 
   return (
@@ -17,9 +19,9 @@ function CTAButton({ onClick, label }: { onClick: () => void; label: string }) {
       onClick={handleClick}
       type="button"
       className={styles.button}
-      disabled={disabled}
+      disabled={isLoading}
     >
-      {label}
+      {isLoading ? <Loader /> : label}
     </button>
   );
 }
